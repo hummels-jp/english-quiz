@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Daily English Quiz</title>
+    <style>
+      :root {
+        --bg: #f7f8f6;
+        --surface: #ffffff;
+        --ink: #1c2420;
+        --muted: #5b6660;
+        --line: #dde2dc;
+        --accent: #0f766e;
+        --accent-ink: #0b5a54;
+        --accent-soft: #e3f2ef;
+        --correct: #15803d;
+        --correct-soft: #e6f4ea;
+        --wrong: #b91c1c;
+        --wrong-soft: #fbe9e9;
+        --shadow: 0 1px 3px rgba(20, 30, 25, 0.07);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121614;
+          --surface: #1b201d;
+          --ink: #e8ede9;
+          --muted: #9aa79e;
+          --line: #313832;
+          --accent: #2dd4bf;
+          --accent-ink: #5eead4;
+          --accent-soft: #12302c;
+          --correct: #4ade80;
+          --correct-soft: #12291a;
+          --wrong: #f87171;
+          --wrong-soft: #331818;
+          --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .wrap {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 20px 16px 48px;
+      }
+      header { margin-bottom: 18px; }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 6px;
+        letter-spacing: 0.2px;
+      }
+      .instr {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+      .progress {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 14px 0 4px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .progress .bar {
+        flex: 1;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--line);
+        overflow: hidden;
+      }
+      .progress .bar i {
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: var(--accent);
+        transition: width 0.25s ease;
+      }
+      h2.section {
+        font-size: 16px;
+        margin: 26px 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid var(--accent);
+        color: var(--accent-ink);
+      }
+      .passage {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px 16px;
+        font-size: 15px;
+        line-height: 1.7;
+        box-shadow: var(--shadow);
+        margin-bottom: 12px;
+      }
+      .passage p { margin: 0; }
+      .q {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 12px;
+        box-shadow: var(--shadow);
+      }
+      .q-text {
+        font-size: 16px;
+        margin: 0 0 12px;
+        font-weight: 500;
+      }
+      .q-num {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent-ink);
+        background: var(--accent-soft);
+        border-radius: 4px;
+        padding: 2px 7px;
+        margin-right: 8px;
+        vertical-align: 2px;
+      }
+      .opts { display: grid; gap: 8px; }
+      .opt {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        text-align: left;
+        font: inherit;
+        font-size: 15px;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1.5px solid var(--line);
+        border-radius: 8px;
+        padding: 13px 14px;
+        min-height: 52px;
+        cursor: pointer;
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+      .opt .letter {
+        flex: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 1.5px solid var(--line);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        margin-top: 1px;
+      }
+      .opt.sel {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .opt.sel .letter {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        .opt.sel .letter { color: #0b201d; }
+      }
+      .opt:disabled { cursor: default; opacity: 1; }
+      .opt.is-correct {
+        border-color: var(--correct);
+        background: var(--correct-soft);
+      }
+      .opt.is-correct .letter {
+        background: var(--correct);
+        border-color: var(--correct);
+        color: #fff;
+      }
+      .opt.is-wrong {
+        border-color: var(--wrong);
+        background: var(--wrong-soft);
+      }
+      .opt.is-wrong .letter {
+        background: var(--wrong);
+        border-color: var(--wrong);
+        color: #fff;
+      }
+      .feedback {
+        display: none;
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        border-top: 1px dashed var(--line);
+        padding-top: 10px;
+      }
+      .feedback.show { display: block; }
+      .feedback .verdict { font-weight: 700; }
+      .feedback .verdict.ok { color: var(--correct); }
+      .feedback .verdict.no { color: var(--wrong); }
+      .feedback .why { color: var(--muted); display: block; margin-top: 2px; }
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .btn {
+        flex: 1;
+        font: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 14px;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      @media (prefers-color-scheme: dark) {
+        .btn-primary { color: #0b201d; }
+      }
+      .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+      .btn-ghost {
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--line);
+        flex: 0 0 auto;
+        padding: 14px 20px;
+      }
+      .result {
+        display: none;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 18px;
+        margin-bottom: 18px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      .result.show { display: block; }
+      .result .score {
+        font-size: 34px;
+        font-weight: 800;
+        margin: 0;
+      }
+      .result .band {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--accent-ink);
+        margin: 6px 0 2px;
+      }
+      .result .note {
+        font-size: 13px;
+        color: var(--muted);
+        margin: 2px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>Daily English Quiz · Day 1 · 2026-10-24</h1>
+        <p class="instr">点选每题答案，每题只能选一个；全部选完后点「提交批改」。建议限时 15 分钟，不查词典。</p>
+        <div class="progress">
+          <span id="progressText">已答 0 / 20</span>
+          <span class="bar"><i id="progressBar"></i></span>
+        </div>
+      </header>
+
+      <div class="result" id="result">
+        <p class="score" id="resultScore"></p>
+        <p class="band" id="resultBand"></p>
+        <p class="note">估算为粗略参考（仅选择题），非正式 IELTS 分数。每题下方已显示正确答案与解析，可往下翻看。</p>
+      </div>
+
+      <main id="quiz"></main>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="submitBtn" disabled>提交批改</button>
+        <button class="btn btn-ghost" id="resetBtn">再来一次</button>
+      </div>
+    </div>
+
+    <script>
+      var PASSAGE = "Static maps once needed revision only a few times a year. Today, road conditions can change within minutes because of accidents, construction, or sudden weather. Modern navigation platforms therefore combine satellite positioning with anonymised signals from vehicles and phones. The challenge is not merely collecting more data, but deciding which changes are reliable enough to display. A single erroneous report, if amplified across millions of devices, could divert traffic into unsuitable streets. For that reason, providers increasingly use confidence scores: a closure is shown immediately when several independent sources agree, whereas an isolated report may trigger verification before it affects routing.";
+
+      var SECTIONS = [
+        {
+          title: "Vocabulary 词汇",
+          questions: [
+            { q: "The new navigation system is designed to ___ delays by predicting congestion before it occurs.",
+              opts: ["exacerbate", "mitigate", "postpone", "overlook"], ans: 1,
+              why: "mitigate = 减轻；exacerbate 是加剧。" },
+            { q: "Despite the setback, the team remained ___ and continued testing.",
+              opts: ["resilient", "reluctant", "redundant", "rigid"], ans: 0,
+              why: "resilient = 有韧性、能快速恢复。" },
+            { q: "The report highlights a significant discrepancy ___ the predicted and actual travel times.",
+              opts: ["among", "between", "within", "from"], ans: 1,
+              why: "discrepancy between A and B 是固定搭配。" },
+            { q: "The committee decided to ___ the launch until all safety checks were complete.",
+              opts: ["proceed", "defer", "hasten", "ignore"], ans: 1,
+              why: "defer = 推迟，与 until... complete 呼应。" },
+            { q: "Her explanation was so ___ that everyone understood the process immediately.",
+              opts: ["lucid", "vague", "lengthy", "technical"], ans: 0,
+              why: "lucid = 清晰易懂，所以大家立刻就懂了。" },
+            { q: "The two departments must ___ their efforts to avoid duplication of work.",
+              opts: ["coordinate", "separate", "conceal", "delay"], ans: 0,
+              why: "coordinate efforts = 协调配合，避免重复劳动。" }
+          ]
+        },
+        {
+          title: "Grammar 语法",
+          questions: [
+            { q: "By the time the update is released, the engineers ___ the routing algorithm for six months.",
+              opts: ["are testing", "have tested", "will test", "will have been testing"], ans: 3,
+              why: "By the time + 将来时间点 + for six months，用将来完成进行时。" },
+            { q: "Neither the sensor data nor the map layer ___ responsible for the error.",
+              opts: ["were", "was", "are", "have been"], ans: 1,
+              why: "neither...nor... 就近原则，与 map layer（单数）一致。" },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "The prototype, which was tested in Tokyo, it performed well in heavy traffic.",
+                "The prototype, which was tested in Tokyo, performed well in heavy traffic.",
+                "The prototype which was tested in Tokyo performing well in heavy traffic.",
+                "The prototype, tested in Tokyo, and it performed well in heavy traffic."
+              ], ans: 1,
+              why: "A 多了重复主语 it，C 缺谓语，D 结构不完整。" },
+            { q: "If the data ___ accurate, the system would have chosen a different route.",
+              opts: ["is", "was", "had been", "would be"], ans: 2,
+              why: "与过去事实相反的虚拟语气用 had been。" },
+            { q: "The manager suggested that the report ___ submitted by Friday.",
+              opts: ["is", "was", "be", "will be"], ans: 2,
+              why: "suggest that... (should) be，虚拟语气用动词原形 be。" },
+            { q: "Hardly ___ the meeting started when the fire alarm rang.",
+              opts: ["had", "has", "did", "was"], ans: 0,
+              why: "Hardly had... when... 是固定句型（刚…就…）。" }
+          ]
+        },
+        {
+          title: "Reading 阅读",
+          passage: PASSAGE,
+          questions: [
+            { q: "What is the main challenge identified in the passage?",
+              opts: ["Collecting satellite signals", "Deciding which changes are reliable", "Printing static maps", "Predicting the weather"], ans: 1,
+              why: "短文原句：the challenge is... deciding which changes are reliable enough to display。" },
+            { q: "A road closure is shown immediately when ___",
+              opts: ["one driver reports it", "the weather suddenly changes", "several independent sources agree", "traffic is light"], ans: 2,
+              why: "短文原句：a closure is shown immediately when several independent sources agree。" },
+            { q: "Why can one erroneous report be harmful?",
+              opts: ["It may divert many drivers into unsuitable streets.", "It stops data collection.", "It makes maps become static.", "It weakens phone signals."], ans: 0,
+              why: "短文原句：错误报告被放大到数百万设备后，could divert traffic into unsuitable streets。" },
+            { q: "An isolated report will most likely ___ before it affects routing.",
+              opts: ["be verified", "be displayed immediately", "be permanently deleted", "be sent to all drivers"], ans: 0,
+              why: "短文原句：an isolated report may trigger verification before it affects routing。" }
+          ]
+        },
+        {
+          title: "Usage & Meaning 用法与句意",
+          questions: [
+            { q: "Choose the sentence closest in meaning: “The update is unlikely to affect most users.”",
+              opts: [
+                "The update will probably not affect most users.",
+                "The update certainly will not affect any users.",
+                "The update may affect all users.",
+                "The update is likely to affect most users."
+              ], ans: 0,
+              why: "unlikely = probably not（多半不会）。" },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "I look forward to hear from you.",
+                "I look forward to hearing from you.",
+                "I look forward hear from you.",
+                "I look forward for hearing from you."
+              ], ans: 1,
+              why: "look forward to + 动名词（hearing）。" },
+            { q: "The results are consistent ___ previous studies.",
+              opts: ["at", "for", "with", "to"], ans: 2,
+              why: "consistent with 是固定搭配。" },
+            { q: "Regular exercise can significantly ___ the risk of heart disease.",
+              opts: ["raise", "maintain", "produce", "reduce"], ans: 3,
+              why: "reduce the risk = 降低风险。" }
+          ]
+        }
+      ];
+
+      var LETTERS = ["A", "B", "C", "D"];
+      var TOTAL = 20;
+      var selections = {}; // qid -> chosen option index
+      var submitted = false;
+
+      var quizEl = document.getElementById("quiz");
+      var submitBtn = document.getElementById("submitBtn");
+      var resetBtn = document.getElementById("resetBtn");
+      var resultEl = document.getElementById("result");
+      var progressText = document.getElementById("progressText");
+      var progressBar = document.getElementById("progressBar");
+
+      function build() {
+        var n = 0;
+        SECTIONS.forEach(function (sec) {
+          var h = document.createElement("h2");
+          h.className = "section";
+          h.textContent = sec.title;
+          quizEl.appendChild(h);
+
+          if (sec.passage) {
+            var p = document.createElement("div");
+            p.className = "passage";
+            var pp = document.createElement("p");
+            pp.textContent = sec.passage;
+            p.appendChild(pp);
+            quizEl.appendChild(p);
+          }
+
+          sec.questions.forEach(function (item) {
+            n += 1;
+            var qid = "q" + n;
+            var card = document.createElement("section");
+            card.className = "q";
+            card.id = "card-" + qid;
+
+            var qt = document.createElement("p");
+            qt.className = "q-text";
+            var num = document.createElement("span");
+            num.className = "q-num";
+            num.textContent = "Q" + n;
+            qt.appendChild(num);
+            qt.appendChild(document.createTextNode(item.q));
+            card.appendChild(qt);
+
+            var opts = document.createElement("div");
+            opts.className = "opts";
+            item.opts.forEach(function (optText, idx) {
+              var b = document.createElement("button");
+              b.type = "button";
+              b.className = "opt";
+              b.dataset.qid = qid;
+              b.dataset.idx = String(idx);
+              var letter = document.createElement("span");
+              letter.className = "letter";
+              letter.textContent = LETTERS[idx];
+              b.appendChild(letter);
+              var span = document.createElement("span");
+              span.textContent = optText;
+              b.appendChild(span);
+              b.addEventListener("click", onSelect);
+              opts.appendChild(b);
+            });
+            card.appendChild(opts);
+
+            var fb = document.createElement("div");
+            fb.className = "feedback";
+            fb.id = "fb-" + qid;
+            card.appendChild(fb);
+
+            quizEl.appendChild(card);
+          });
+        });
+      }
+
+      function onSelect(e) {
+        if (submitted) return;
+        var btn = e.currentTarget;
+        var qid = btn.dataset.qid;
+        selections[qid] = parseInt(btn.dataset.idx, 10);
+        var siblings = document.querySelectorAll('.opt[data-qid="' + qid + '"]');
+        siblings.forEach(function (b) { b.classList.remove("sel"); });
+        btn.classList.add("sel");
+        updateProgress();
+      }
+
+      function updateProgress() {
+        var count = Object.keys(selections).length;
+        progressText.textContent = "已答 " + count + " / " + TOTAL;
+        progressBar.style.width = (count / TOTAL * 100) + "%";
+        submitBtn.disabled = count < TOTAL;
+      }
+
+      function bandFor(score) {
+        if (score >= 18) return "≈ Band 8+";
+        if (score >= 15) return "≈ Band 7.0–7.5";
+        if (score >= 12) return "≈ Band 6.0–6.5";
+        if (score >= 9) return "≈ Band 5.5";
+        return "≈ Band 5.0 或以下";
+      }
+
+      function questionById(qid) {
+        var n = parseInt(qid.slice(1), 10);
+        var i = 0;
+        for (var s = 0; s < SECTIONS.length; s++) {
+          for (var k = 0; k < SECTIONS[s].questions.length; k++) {
+            i += 1;
+            if (i === n) return SECTIONS[s].questions[k];
+          }
+        }
+        return null;
+      }
+
+      function submit() {
+        if (Object.keys(selections).length < TOTAL) return;
+        submitted = true;
+        var score = 0;
+        for (var n = 1; n <= TOTAL; n++) {
+          var qid = "q" + n;
+          var item = questionById(qid);
+          var chosen = selections[qid];
+          var correct = chosen === item.ans;
+          if (correct) score += 1;
+
+          var btns = document.querySelectorAll('.opt[data-qid="' + qid + '"]');
+          btns.forEach(function (b) {
+            b.disabled = true;
+            var idx = parseInt(b.dataset.idx, 10);
+            if (idx === item.ans) b.classList.add("is-correct");
+            else if (idx === chosen) b.classList.add("is-wrong");
+          });
+
+          var fb = document.getElementById("fb-" + qid);
+          fb.innerHTML = "";
+          var v = document.createElement("span");
+          v.className = "verdict " + (correct ? "ok" : "no");
+          v.textContent = correct
+            ? "✓ 回答正确"
+            : "✗ 回答错误，正确答案是 " + LETTERS[item.ans];
+          fb.appendChild(v);
+          var why = document.createElement("span");
+          why.className = "why";
+          why.textContent = item.why;
+          fb.appendChild(why);
+          fb.classList.add("show");
+        }
+
+        document.getElementById("resultScore").textContent = score + " / " + TOTAL;
+        document.getElementById("resultBand").textContent = "IELTS 估算：" + bandFor(score);
+        resultEl.classList.add("show");
+        submitBtn.disabled = true;
+        resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function reset() {
+        submitted = false;
+        selections = {};
+        document.querySelectorAll(".opt").forEach(function (b) {
+          b.classList.remove("sel", "is-correct", "is-wrong");
+          b.disabled = false;
+        });
+        document.querySelectorAll(".feedback").forEach(function (f) {
+          f.classList.remove("show");
+          f.innerHTML = "";
+        });
+        resultEl.classList.remove("show");
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      build();
+      updateProgress();
+      submitBtn.addEventListener("click", submit);
+      resetBtn.addEventListener("click", reset);
+    </script>
+  </body>
+</html>
