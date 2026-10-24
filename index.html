@@ -264,7 +264,7 @@
   <body>
     <div class="wrap">
       <header>
-        <h1>Daily English Quiz · Day 1 · 2026-10-24</h1>
+        <h1>Daily English Quiz · Day 2 · 2026-10-25</h1>
         <p class="instr">点选每题答案，每题只能选一个；全部选完后点「提交批改」。建议限时 15 分钟，不查词典。</p>
         <div class="progress">
           <span id="progressText">已答 0 / 20</span>
@@ -287,103 +287,118 @@
     </div>
 
     <script>
-      var PASSAGE = "Static maps once needed revision only a few times a year. Today, road conditions can change within minutes because of accidents, construction, or sudden weather. Modern navigation platforms therefore combine satellite positioning with anonymised signals from vehicles and phones. The challenge is not merely collecting more data, but deciding which changes are reliable enough to display. A single erroneous report, if amplified across millions of devices, could divert traffic into unsuitable streets. For that reason, providers increasingly use confidence scores: a closure is shown immediately when several independent sources agree, whereas an isolated report may trigger verification before it affects routing.";
+      var PASSAGE = "High-definition maps give self-driving vehicles centimetre-level detail about lane markings, road edges, and traffic signs. Unlike a standard navigation map, an HD map must reflect the road exactly as it is today, not as it was months ago. Roadworks, new signs, and repainted lanes can quickly make a map stale. To keep maps current, companies combine survey vehicles with data from fleets on the road, updating sections as changes are detected. However, engineers warn against relying on the map alone: sensors must still confirm what is actually ahead, because no map can predict a fallen tree or a temporary barrier. The safest systems therefore treat the map as a strong prior belief, not as absolute truth.";
 
       var SECTIONS = [
         {
           title: "Vocabulary 词汇",
           questions: [
-            { q: "The new navigation system is designed to ___ delays by predicting congestion before it occurs.",
-              opts: ["exacerbate", "mitigate", "postpone", "overlook"], ans: 1,
-              why: "mitigate = 减轻；exacerbate 是加剧。" },
-            { q: "Despite the setback, the team remained ___ and continued testing.",
-              opts: ["resilient", "reluctant", "redundant", "rigid"], ans: 0,
-              why: "resilient = 有韧性、能快速恢复。" },
-            { q: "The report highlights a significant discrepancy ___ the predicted and actual travel times.",
-              opts: ["among", "between", "within", "from"], ans: 1,
-              why: "discrepancy between A and B 是固定搭配。" },
-            { q: "The committee decided to ___ the launch until all safety checks were complete.",
-              opts: ["proceed", "defer", "hasten", "ignore"], ans: 1,
-              why: "defer = 推迟，与 until... complete 呼应。" },
-            { q: "Her explanation was so ___ that everyone understood the process immediately.",
-              opts: ["lucid", "vague", "lengthy", "technical"], ans: 0,
-              why: "lucid = 清晰易懂，所以大家立刻就懂了。" },
-            { q: "The two departments must ___ their efforts to avoid duplication of work.",
-              opts: ["coordinate", "separate", "conceal", "delay"], ans: 0,
-              why: "coordinate efforts = 协调配合，避免重复劳动。" }
+            { q: "To reduce the risk of a system failure, the team took early steps to ______ the impact of sensor errors.",
+              opts: ["mitigate", "magnify", "ignore", "postpone"], ans: 0,
+              why: "Mitigate means to make a problem less severe." },
+            { q: "The client's instructions were so ______ that two teams interpreted them in completely different ways.",
+              opts: ["precise", "ambiguous", "urgent", "generous"], ans: 1,
+              why: "Ambiguous means open to more than one interpretation." },
+            { q: "Before release, the software must pass ______ testing under rain, snow, and low-light conditions.",
+              opts: ["fragile", "casual", "robust", "optional"], ans: 2,
+              why: "Robust testing means thorough and able to handle difficult conditions." },
+            { q: "Rather than launching a perfect product at once, the team follows an ______ process, improving the map in repeated cycles.",
+              opts: ["iterative", "instant", "random", "final"], ans: 0,
+              why: "Iterative means done in repeated cycles of improvement." },
+            { q: "Engineers noticed a ______ between the HD map and the vehicle's live sensor readings at the intersection.",
+              opts: ["similarity", "discrepancy", "agreement", "routine"], ans: 1,
+              why: "A discrepancy is a difference between two things that should match." },
+            { q: "After a long discussion, all stakeholders finally ______ on the launch timeline.",
+              opts: ["disagreed", "aligned", "hesitated", "competed"], ans: 1,
+              why: "To align on something means to reach agreement about it." }
           ]
         },
         {
           title: "Grammar 语法",
           questions: [
-            { q: "By the time the update is released, the engineers ___ the routing algorithm for six months.",
-              opts: ["are testing", "have tested", "will test", "will have been testing"], ans: 3,
-              why: "By the time + 将来时间点 + for six months，用将来完成进行时。" },
-            { q: "Neither the sensor data nor the map layer ___ responsible for the error.",
-              opts: ["were", "was", "are", "have been"], ans: 1,
-              why: "neither...nor... 就近原则，与 map layer（单数）一致。" },
             { q: "Choose the correct sentence:",
               opts: [
-                "The prototype, which was tested in Tokyo, it performed well in heavy traffic.",
-                "The prototype, which was tested in Tokyo, performed well in heavy traffic.",
-                "The prototype which was tested in Tokyo performing well in heavy traffic.",
-                "The prototype, tested in Tokyo, and it performed well in heavy traffic."
+                "Each of the engineers have reviewed the test report.",
+                "Each of the engineers has reviewed the test report.",
+                "Each of the engineers are reviewing the test report.",
+                "Each of the engineers have review the test report."
               ], ans: 1,
-              why: "A 多了重复主语 it，C 缺谓语，D 结构不完整。" },
-            { q: "If the data ___ accurate, the system would have chosen a different route.",
-              opts: ["is", "was", "had been", "would be"], ans: 2,
-              why: "与过去事实相反的虚拟语气用 had been。" },
-            { q: "The manager suggested that the report ___ submitted by Friday.",
-              opts: ["is", "was", "be", "will be"], ans: 2,
-              why: "suggest that... (should) be，虚拟语气用动词原形 be。" },
-            { q: "Hardly ___ the meeting started when the fire alarm rang.",
-              opts: ["had", "has", "did", "was"], ans: 0,
-              why: "Hardly had... when... 是固定句型（刚…就…）。" }
+              why: "“Each” takes a singular verb, so “has” is correct." },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "Not only the team improved accuracy, but also reduced latency.",
+                "Not only did the team improve accuracy, but it also reduced latency.",
+                "Not only did the team improved accuracy, but also it reduced latency.",
+                "Not only the team did improve accuracy, but it also reduced latency."
+              ], ans: 1,
+              why: "After “not only” at the start, the verb and subject invert (“did the team improve”)." },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "If the sensor failed yesterday, the vehicle would stop safely.",
+                "If the sensor had failed yesterday, the vehicle would have stopped safely.",
+                "If the sensor had failed yesterday, the vehicle would stop safely.",
+                "If the sensor fails yesterday, the vehicle would have stopped safely."
+              ], ans: 1,
+              why: "A past unreal condition uses “had + past participle” with “would have + past participle”." },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "Neither the manager nor the engineers was available for the review.",
+                "Neither the manager nor the engineers were available for the review.",
+                "Neither the manager nor the engineers is available for the review.",
+                "Neither the manager or the engineers were available for the review."
+              ], ans: 1,
+              why: "With “neither…nor”, the verb agrees with the nearer subject, “engineers”." },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "Having validated the new map data, the team deployed the update.",
+                "Having validate the new map data, the team deployed the update.",
+                "Having validated the new map data, the update was deployed by the team yesterday morning it.",
+                "Validated the new map data, the team deployed the update it."
+              ], ans: 0,
+              why: "“Having validated” correctly shows a completed action before the main action." },
+            { q: "Choose the correct sentence:",
+              opts: [
+                "The project lead is responsible to ensuring data quality.",
+                "The project lead is responsible for ensuring data quality.",
+                "The project lead is responsible of ensuring data quality.",
+                "The project lead is responsible in ensuring data quality."
+              ], ans: 1,
+              why: "The fixed collocation is “responsible for” + gerund." }
           ]
         },
         {
           title: "Reading 阅读",
           passage: PASSAGE,
           questions: [
-            { q: "What is the main challenge identified in the passage?",
-              opts: ["Collecting satellite signals", "Deciding which changes are reliable", "Printing static maps", "Predicting the weather"], ans: 1,
-              why: "短文原句：the challenge is... deciding which changes are reliable enough to display。" },
-            { q: "A road closure is shown immediately when ___",
-              opts: ["one driver reports it", "the weather suddenly changes", "several independent sources agree", "traffic is light"], ans: 2,
-              why: "短文原句：a closure is shown immediately when several independent sources agree。" },
-            { q: "Why can one erroneous report be harmful?",
-              opts: ["It may divert many drivers into unsuitable streets.", "It stops data collection.", "It makes maps become static.", "It weakens phone signals."], ans: 0,
-              why: "短文原句：错误报告被放大到数百万设备后，could divert traffic into unsuitable streets。" },
-            { q: "An isolated report will most likely ___ before it affects routing.",
-              opts: ["be verified", "be displayed immediately", "be permanently deleted", "be sent to all drivers"], ans: 0,
-              why: "短文原句：an isolated report may trigger verification before it affects routing。" }
+            { q: "What is the main purpose of an HD map, according to the passage?",
+              opts: ["To replace all vehicle sensors.", "To give very precise detail about the road environment.", "To predict temporary obstacles.", "To reduce the cost of survey vehicles."], ans: 1,
+              why: "The passage says HD maps give centimetre-level detail about lanes, edges, and signs." },
+            { q: "Why must HD maps be updated frequently?",
+              opts: ["Because drivers prefer new maps.", "Because roadworks and new signs quickly make them out of date.", "Because survey vehicles are expensive.", "Because sensors cannot work without them."], ans: 1,
+              why: "Roadworks, new signs, and repainted lanes can quickly make a map stale." },
+            { q: "What does the word “stale” mean in this passage?",
+              opts: ["Very detailed.", "Expensive to produce.", "No longer accurate or fresh.", "Widely used."], ans: 2,
+              why: "“Stale” here means outdated and no longer matching reality." },
+            { q: "What can be inferred about the safest self-driving systems?",
+              opts: ["They ignore sensor data.", "They treat the map as one source of information to be checked against sensors.", "They never use HD maps.", "They can predict all temporary obstacles."], ans: 1,
+              why: "The safest systems treat the map as a prior belief, not absolute truth, and still check with sensors." }
           ]
         },
         {
           title: "Usage & Meaning 用法与句意",
           questions: [
-            { q: "Choose the sentence closest in meaning: “The update is unlikely to affect most users.”",
-              opts: [
-                "The update will probably not affect most users.",
-                "The update certainly will not affect any users.",
-                "The update may affect all users.",
-                "The update is likely to affect most users."
-              ], ans: 0,
-              why: "unlikely = probably not（多半不会）。" },
-            { q: "Choose the correct sentence:",
-              opts: [
-                "I look forward to hear from you.",
-                "I look forward to hearing from you.",
-                "I look forward hear from you.",
-                "I look forward for hearing from you."
-              ], ans: 1,
-              why: "look forward to + 动名词（hearing）。" },
-            { q: "The results are consistent ___ previous studies.",
-              opts: ["at", "for", "with", "to"], ans: 2,
-              why: "consistent with 是固定搭配。" },
-            { q: "Regular exercise can significantly ___ the risk of heart disease.",
-              opts: ["raise", "maintain", "produce", "reduce"], ans: 3,
-              why: "reduce the risk = 降低风险。" }
+            { q: "“We cannot cut corners on safety testing, even under deadline pressure.” The phrase “cut corners” means:",
+              opts: ["To save time by skipping important steps.", "To design a sharper product.", "To reduce the budget fairly.", "To divide work equally."], ans: 0,
+              why: "To cut corners means to do something cheaply or quickly by skipping proper steps." },
+            { q: "“Before the client meeting, let's make sure we are all on the same page.” This means:",
+              opts: ["We should read the same document.", "We should share the same understanding.", "We should sit together.", "We should finish at the same time."], ans: 1,
+              why: "“On the same page” means sharing the same understanding or agreement." },
+            { q: "“The company will roll out the update region by region.” “Roll out” means:",
+              opts: ["To withdraw a product.", "To introduce or launch something gradually.", "To test in secret.", "To cancel a plan."], ans: 1,
+              why: "To roll out means to introduce a product or update in stages." },
+            { q: "“There is a trade-off between response speed and accuracy.” A “trade-off” is:",
+              opts: ["A complete solution.", "A situation where improving one thing worsens another.", "A legal agreement.", "A free exchange of goods."], ans: 1,
+              why: "A trade-off means gaining one benefit at the cost of another." }
           ]
         }
       ];
@@ -482,11 +497,11 @@
       }
 
       function bandFor(score) {
-        if (score >= 18) return "≈ Band 8+";
-        if (score >= 15) return "≈ Band 7.0–7.5";
-        if (score >= 12) return "≈ Band 6.0–6.5";
-        if (score >= 9) return "≈ Band 5.5";
-        return "≈ Band 5.0 或以下";
+        if (score >= 18) return "≈ Band 7.5+";
+        if (score >= 15) return "≈ Band 7.0";
+        if (score >= 12) return "≈ Band 6.5";
+        if (score >= 9) return "≈ Band 6.0";
+        return "≈ Band 6.0 以下";
       }
 
       function questionById(qid) {
