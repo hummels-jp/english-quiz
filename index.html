@@ -264,7 +264,7 @@
   <body>
     <div class="wrap">
       <header>
-        <h1>Daily English Quiz · Day 3 · 2026-10-26</h1>
+        <h1>Daily English Quiz · Day 4 · 2026-10-27</h1>
         <p class="instr">点选每题答案，每题只能选一个；全部选完后点「提交批改」。建议限时 15 分钟，不查词典。</p>
         <div class="progress">
           <span id="progressText">已答 0 / 20</span>
@@ -287,88 +287,88 @@
     </div>
 
     <script>
-      var PASSAGE = "Last year, the city introduced a low-emission zone covering its historic centre. Vehicles that fail to meet strict exhaust standards must pay a daily charge, while residents receive a discount and additional bus services run every ten minutes. Early data suggest the policy is working: nitrogen dioxide levels fell by 18% in six months, and bus ridership rose by 12%. Critics, however, argue that the charge falls hardest on low-income drivers who cannot afford newer cars, and that small businesses on the edge of the zone have lost customers. The council says it will review exemptions for essential workers and consider using the revenue to subsidise cleaner vehicles, rather than abandoning a scheme it calls a necessary first step.";
+      var PASSAGE = "The '15-minute city' is an urban planning idea in which everything residents need daily — work, schools, shops, clinics and parks — lies within a 15-minute walk or cycle from home. Supporters say it cuts car use, lowers emissions and gives people back time now lost in traffic. Critics, however, warn that the model works best in dense inner-city districts and is hard to apply to sprawling suburbs, where homes, jobs and services are far apart. They also fear that restricting car access could inconvenience elderly or disabled residents who depend on driving. Advocates reply that the goal is not to ban cars but to make walking, cycling and public transport so convenient that driving becomes a choice rather than a necessity.";
 
       var SECTIONS = [
         {
           title: "Vocabulary 词汇语境",
           questions: [
-            { q: "The council plans to ______ a congestion charge in the city centre next spring.",
-              opts: ["implement", "postpone", "abolish", "suspend"], ans: 0,
-              why: "implement 指正式实施一项政策，符合语境。" },
-            { q: "Better bus services could ______ pressure on the road network during rush hour.",
-              opts: ["intensify", "alleviate", "ignore", "provoke"], ans: 1,
-              why: "alleviate 意为减轻、缓解压力。" },
-            { q: "Many ______ travel more than an hour each way between home and work.",
-              opts: ["pedestrians", "commuters", "tourists", "residents"], ans: 1,
-              why: "commuters 指每天往返于住所与工作地点之间的人。" },
-            { q: "The discount is intended as an ______ for drivers to switch to public transport.",
-              opts: ["incentive", "obstacle", "penalty", "exception"], ans: 0,
-              why: "incentive 指鼓励某种行为的刺激、好处。" },
-            { q: "Officials questioned whether building a new tram line within two years is really ______.",
-              opts: ["feasible", "optional", "controversial", "temporary"], ans: 0,
-              why: "feasible 意为可行的、切实可行的。" },
-            { q: "The new plan will ______ pedestrians and cyclists over private cars in the city centre.",
-              opts: ["prioritise", "discourage", "replace", "monitor"], ans: 0,
-              why: "prioritise 意为给予优先地位。" }
+            { q: "The city council's plan to introduce congestion charges has sparked fierce debate: supporters argue it will ___ traffic in the centre, while critics warn it may hurt small businesses.",
+              opts: ["alleviate", "accumulate", "accelerate", "anticipate"], ans: 0,
+              why: "alleviate 意为“缓解”，符合减少市中心交通的语境。" },
+            { q: "Many commuters have ___ cycling as their main way to get to work since the new bike lanes opened.",
+              opts: ["adopted", "adapted", "adjusted", "admitted"], ans: 0,
+              why: "adopt 意为“采用、采纳”；adapt 是“使适应”，不合语境。" },
+            { q: "The mayor promised that the new tram line would be completed on schedule, but critics remain ___ about whether the funding is sufficient.",
+              opts: ["sceptical", "indifferent", "optimistic", "enthusiastic"], ans: 0,
+              why: "sceptical 表示怀疑，与 but 的转折一致。" },
+            { q: "To ___ the pressure on the overloaded metro system, planners are encouraging staggered working hours.",
+              opts: ["ease", "erase", "evade", "exhaust"], ans: 0,
+              why: "ease pressure 是固定搭配，意为“缓解压力”。" },
+            { q: "The report highlights a stark ___ between neighbourhoods with good public transport and those without: residents in the latter spend twice as long commuting.",
+              opts: ["contrast", "conflict", "contest", "contact"], ans: 0,
+              why: "contrast 指对比、差异，stark contrast 为固定搭配。" },
+            { q: "City officials hope the new green corridors will ___ residents to walk more and rely less on cars.",
+              opts: ["compel", "entice", "oblige", "enforce"], ans: 1,
+              why: "entice 意为“吸引、诱使”，语气积极；其余三项均含强制意味，不合语境。" }
           ]
         },
         {
           title: "Grammar 语法与改错",
           questions: [
-            { q: "Neither the mayor nor the councillors ______ in favour of raising the charge this year.",
-              opts: ["is", "are", "has been", "were being"], ans: 1,
-              why: "neither…nor 就近原则，谓语与较近的主语 councillors（复数）一致，用 are。" },
-            { q: "找出错误的一项：The number of cyclists have doubled since the new cycle lanes opened.",
-              opts: ["The number", "have", "doubled", "opened"], ans: 1,
-              why: "主语是 the number（单数），谓语应用 has 而非 have。" },
-            { q: "If the city had invested in its bus network earlier, congestion ______ less severe now.",
-              opts: ["would have been", "would be", "will be", "is"], ans: 1,
-              why: "混合虚拟条件句，过去条件、现在结果，用 would be。" },
-            { q: "The scheme, ______ aims to cut exhaust emissions, will come into force in January.",
-              opts: ["that", "which", "what", "where"], ans: 1,
-              why: "非限制性定语从句修饰 the scheme，关系代词用 which。" },
-            { q: "Commuters are charged more ______ peak hours than at other times of day.",
-              opts: ["at", "on", "in", "during"], ans: 3,
-              why: "during peak hours 是固定搭配，指在高峰时段内。" },
-            { q: "By 2030, the city ______ its entire bus fleet to electric vehicles.",
-              opts: ["converts", "will convert", "will have converted", "has converted"], ans: 2,
-              why: "by 2030 强调到将来某时已完成，用将来完成时 will have converted。" }
+            { q: "Which sentence contains a grammatical error?",
+              opts: ["Each of the new bus routes have been redesigned to serve the suburbs.", "The number of cyclists on the new lane has doubled since January.", "Neither the mayor nor the councillors were present at the hearing.", "Walking to work every day keeps her fit and saves money."], ans: 0,
+              why: "Each of + 复数名词后谓语用单数，应为 has been redesigned。" },
+            { q: "Which sentence is grammatically correct?",
+              opts: ["If the city invests more in trams, traffic congestion would reduce significantly.", "If the city invested more in trams, traffic congestion would reduce significantly.", "If the city would invest more in trams, traffic congestion will reduce significantly.", "If the city had invested more in trams, traffic congestion will reduce significantly."], ans: 1,
+              why: "与现在事实相反的假设用过去时 + would。" },
+            { q: "Which part contains an error? “Not only the residents (A) but also the local businesses (B) opposes (C) the road closure (D).”",
+              opts: ["A", "B", "C", "D"], ans: 2,
+              why: "not only...but also 遵循就近原则，谓语应与 businesses 一致，用 oppose。" },
+            { q: "Which sentence is grammatically correct?",
+              opts: ["The number of people using public transport are increasing every year.", "A number of new stations is being built along the line.", "The number of people using public transport is increasing every year.", "A number of new stations has been built along the line."], ans: 2,
+              why: "the number of 作主语谓语用单数；a number of 后谓语用复数。" },
+            { q: "Which part contains an error? “She suggested (A) that he takes (B) the night bus instead of driving (C) home after the late meeting (D).”",
+              opts: ["A", "B", "C", "D"], ans: 1,
+              why: "suggest 后 that 从句用虚拟语气，动词用原形 take。" },
+            { q: "Which sentence contains a grammatical error?",
+              opts: ["Having finished the report, the data was submitted to the council.", "Having finished the report, she submitted the data to the council.", "The data, having been checked twice, was submitted to the council.", "After checking the data twice, she submitted it to the council."], ans: 0,
+              why: "分词逻辑主语不一致，完成报告的应是人而非 data，属悬垂修饰。" }
           ]
         },
         {
           title: "Reading 短阅读理解",
           passage: PASSAGE,
           questions: [
-            { q: "According to the passage, nitrogen dioxide levels fell by ______.",
-              opts: ["12%", "18%", "10%", "6%"], ans: 1,
-              why: "文中明确提到 six months 内下降了 18%。" },
-            { q: "Critics are mainly concerned that the charge ______.",
-              opts: ["is too difficult to collect", "falls hardest on low-income drivers", "will increase bus fares", "only applies to residents"], ans: 1,
-              why: "批评者认为收费对无力购买新车的低收入司机负担最重。" },
-            { q: "In response to criticism, the council plans to ______.",
-              opts: ["abandon the scheme", "review exemptions and consider subsidising cleaner vehicles", "raise the charge further", "close small businesses"], ans: 1,
-              why: "市议会表示将审查豁免并考虑用收入补贴清洁车辆，而非放弃该计划。" },
-            { q: "The rise in bus ridership most likely suggests that ______.",
-              opts: ["bus fares have fallen", "more people are choosing public transport", "car ownership has risen", "the zone covers a larger area"], ans: 1,
-              why: "公交乘客量上升 12% 说明更多人选择公共交通。" }
+            { q: "What is the main idea of the passage?",
+              opts: ["Cities should ban cars entirely.", "Daily necessities should be reachable within a short walk or cycle.", "Suburbs are better places to live than city centres.", "Public transport is the only solution to traffic."], ans: 1,
+              why: "短文核心即“15 分钟城市”概念：日常所需皆在步行或骑行 15 分钟内。" },
+            { q: "According to critics, the model's main limitation is that ____.",
+              opts: ["it increases emissions", "it is difficult to apply in low-density suburbs", "it gives people too much free time", "it bans cars completely"], ans: 1,
+              why: "批评者指出该模式在低密度、蔓延式郊区难以推行。" },
+            { q: "The word “sprawling” in the passage is closest in meaning to ____.",
+              opts: ["crowded", "expanding over a large area", "wealthy", "modern"], ans: 1,
+              why: "sprawling 指（城市）无规划地向外大面积蔓延。" },
+            { q: "What do advocates say is the real goal?",
+              opts: ["To ban all private cars.", "To make alternatives so convenient that driving becomes optional.", "To build more roads.", "To move everyone into city centres."], ans: 1,
+              why: "倡导者称目标不是禁车，而是让步行、骑行和公交足够便利，使开车成为可选项而非必需。" }
           ]
         },
         {
           title: "Usage & Meaning 用法与句意",
           questions: [
-            { q: "“The low-emission zone is a double-edged sword.” 这句话的意思是该政策 ______。",
-              opts: ["只会带来好处", "既有好处也有弊端", "完全失败", "难以执行"], ans: 1,
-              why: "double-edged sword 比喻有好有坏的两面性。" },
-            { q: "“The contractor cut corners when building the new cycle lanes.” 其中 cut corners 的意思是 ______。",
-              opts: ["走了捷径、偷工减料", "增加了预算", "延长了工期", "改善了设计"], ans: 0,
-              why: "cut corners 指为省时省钱而马虎行事、牺牲质量。" },
-            { q: "“Bus ridership rose on the back of improved services.” 其中 on the back of 的意思是 ______。",
-              opts: ["尽管", "由于、得益于", "反对", "在……之前"], ans: 1,
-              why: "on the back of 表示以……为基础、由于……。" },
-            { q: "“The council will take stock of the scheme after six months.” 其中 take stock of 的意思是 ______。",
-              opts: ["购买", "评估、总结情况", "取消", "宣传"], ans: 1,
-              why: "take stock of 指全面评估、盘点形势后再作决定。" }
+            { q: "“The plan is still on the drawing board” means ____.",
+              opts: ["It has been approved.", "It is still being designed or planned.", "It has been cancelled.", "It is under construction."], ans: 1,
+              why: "on the drawing board 意为“尚在筹划、设计阶段”。" },
+            { q: "Choose the best paraphrase of “The council had no choice but to raise fares.”",
+              opts: ["The council wanted to raise fares.", "The council was forced to raise fares.", "The council refused to raise fares.", "The council decided not to raise fares."], ans: 1,
+              why: "had no choice but to 即“不得不”，表示被迫。" },
+            { q: "In “The new metro line will be a game changer for the suburbs”, “game changer” means ____.",
+              opts: ["something that significantly changes a situation", "a new sports facility", "a rule change", "an entertainment venue"], ans: 0,
+              why: "game changer 指能显著改变局面的事物。" },
+            { q: "Which sentence best expresses polite disagreement in a workplace meeting?",
+              opts: ["“That's completely wrong.”", "“I see your point, but I wonder whether a different approach might work better.”", "“You don't understand the problem.”", "“Let's just do it my way.”"], ans: 1,
+              why: "先肯定对方再委婉提出不同看法，是职场礼貌表达异议的方式。" }
           ]
         }
       ];
